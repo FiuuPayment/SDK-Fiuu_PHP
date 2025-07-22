@@ -82,10 +82,10 @@ You can contribute to this plugin by sending the pull request to this repository
 
 - GitHub:     https://github.com/FiuuPayment
 - Website:    https://fiuu.com/
-- Twitter:    https://twitter.com/Razer_MS
-- YouTube:    https://www.youtube.com/c/RazerMerchantServices
-- Facebook:   https://www.facebook.com/RazerMerchantServices/
-- Instagram:  https://www.instagram.com/RazerMerchantServices/
+- Twitter:    https://twitter.com/FiuuPayment
+- YouTube:    https://www.youtube.com/@FiuuPayment
+- Facebook:   https://www.facebook.com/FiuuPayment/
+- Instagram:  https://www.instagram.com/FiuuPayment/
 
 
 Issues
