@@ -91,7 +91,7 @@ You can contribute to this plugin by sending the pull request to this repository
 Issues
 ------------
 
-Submit issue to this repository or email to our support-sa@razer.com
+Submit issue to this repository or email to our support@fiuu.com
 
 
 Contact Support
