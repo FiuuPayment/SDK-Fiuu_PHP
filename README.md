@@ -1,21 +1,21 @@
-# SDK-RazerMS_PHP
+# SDK-Fiuu_PHP
 
-This is a PHP library for integrating with the Razer Merchant Services (RMS) hosted payment gateway. It provides a simple interface for creating and managing transactions, handling callbacks, and more.
+This is a PHP library for integrating with the Razer Merchant Services (Fiuu) hosted payment gateway. It provides a simple interface for creating and managing transactions, handling callbacks, and more.
 
 ## Installation
 
 To use this library, simply clone the repository or install via composer:
 
 ```
-composer config repositories.razerms '{"url":"https://github.com/FiuuPayment/SDK-RazerMS_PHP","type":"vcs"}'
+composer config repositories.fiuu '{"url":"https://github.com/FiuuPayment/SDK-Fiuu_PHP","type":"vcs"}'
 composer require fiuu/payment:dev-main#1.0.1
 ```
 
 ## Usage
 
-To get started, you will need to provide your RMS merchant ID, verify key, and secret key. These can be obtained from your RMS account dashboard.
+To get started, you will need to provide your Fiuu merchant ID, verify key, and secret key. These can be obtained from your Fiuu account dashboard.
 
-You will also need to set the RMS environment, which can be either `sandbox` or `production`. This can be done by adding the following to your `.env` file:
+You will also need to set the Fiuu environment, which can be either `sandbox` or `production`. This can be done by adding the following to your `.env` file:
 
 ````
 FIUU_MERCHANT_ID=your_merchant_id
@@ -26,12 +26,12 @@ FIUU_ENVIRONMENT=sandbox
 
 Note that you should replace `your_merchant_id`, `your_verify_key`, and `your_secret_key` with your actual values.
 
-Once you have configured your environment, you can create a new instance of the RMS class:
+Once you have configured your environment, you can create a new instance of the Fiuu class:
 
 ```php
 use Fiuu\Payment;
 
-$fiuu = new Payment(env('RMS_MERCHANT_ID'), env('RMS_VERIFY_KEY'), env('RMS_SECRET_KEY'), env('RMS_ENVIRONMENT'));
+$fiuu = new Payment(env('FIUU_MERCHANT_ID'), env('FIUU_VERIFY_KEY'), env('FIUU_SECRET_KEY'), env('FIUU_ENVIRONMENT'));
 ```
 
 From there, you can create a new transaction by calling the getPaymentUrl method:
@@ -44,15 +44,15 @@ $paymentUrl = $fiuu->getPaymentUrl($orderid, $amount, $bill_name, $bill_email, $
 return redirect($paymentUrl);
 ```
 
-This will return a new Transaction object, which you can use to generate a payment form or redirect the user to the RMS hosted payment page.
+This will return a new Transaction object, which you can use to generate a payment form or redirect the user to the Fiuu hosted payment page.
 
-When the transaction is complete, RMS will send a notification to your server to notify you of the transaction status. You can handle this notification by defining a notification URL in your RMS account dashboard and adding the following code to your notification script:
+When the transaction is complete, Fiuu will send a notification to your server to notify you of the transaction status. You can handle this notification by defining a notification URL in your Fiuu account dashboard and adding the following code to your notification script:
 
 ```php
 
 public function notification(Request $request)
     {   
-        $fiuu = new Payment(env('RMS_MERCHANT_ID'), env('RMS_VERIFY_KEY'), env('RMS_SECRET_KEY'), env('RMS_ENVIRONMENT'));
+        $fiuu = new Payment(env('FIUU_MERCHANT_ID'), env('FIUU_VERIFY_KEY'), env('FIUU_SECRET_KEY'), env('FIUU_ENVIRONMENT'));
         $key = md5($request->tranID.$request->orderid.$request->status.$request->domain.$request->amount.$request->currency);
         $isPaymentValid = $fiuu->verifySignature($request->paydate, $request->domain, $key, $request->appcode, $request->skey);
     
