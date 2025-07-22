@@ -1,6 +1,6 @@
 # SDK-Fiuu_PHP
 
-This is a PHP library for integrating with the Razer Merchant Services (Fiuu) hosted payment gateway. It provides a simple interface for creating and managing transactions, handling callbacks, and more.
+This is a PHP library for integrating with the Fiuu hosted payment gateway. It provides a simple interface for creating and managing transactions, handling callbacks, and more.
 
 ## Installation
 
