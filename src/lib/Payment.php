@@ -1,5 +1,5 @@
 <?php
-namespace RazerMerchantServices;
+namespace Fiuu;
 
 class Payment
 {
@@ -15,10 +15,10 @@ class Payment
         $this->verifyKey = $verifyKey;
         $this->secretKey = $secretKey;
         $this->environment = $environment;
-        $this->baseUrl = ($environment === 'sandbox') ? 'https://sandbox.merchant.razer.com/RMS/pay/'.$merchantId : 'https://pay.merchant.razer.com/RMS/pay/'.$merchantId;
+        $this->baseUrl = ($environment === 'sandbox') ? 'https://sandbox-payment.fiuu.com/RMS/pay/'.$merchantId : 'https://pay.fiuu.com/RMS/pay/'.$merchantId;
     }
 
-    public function getPaymentUrl($orderid, $amount, $bill_name, $bill_email, $bill_mobile, $bill_desc = 'RMS PHP Library', $channel = null, $currency = null, $returnUrl = null, $callbackurl = null, $cancelurl = null)
+    public function getPaymentUrl($orderid, $amount, $bill_name, $bill_email, $bill_mobile, $bill_desc = 'Fiuu PHP Library', $channel = null, $currency = null, $returnUrl = null, $callbackurl = null, $cancelurl = null)
     {
         $amount = number_format($amount, 2, '.', '');
         $data = [

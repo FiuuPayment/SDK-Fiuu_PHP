@@ -7,8 +7,8 @@ This is a PHP library for integrating with the Razer Merchant Services (RMS) hos
 To use this library, simply clone the repository or install via composer:
 
 ```
-composer config repositories.razerms '{"url":"https://github.com/RazerMS/SDK-RazerMS_PHP","type":"vcs"}'
-composer require razermerchantservices/payment:dev-main#1.0.1
+composer config repositories.razerms '{"url":"https://github.com/FiuuPayment/SDK-RazerMS_PHP","type":"vcs"}'
+composer require fiuu/payment:dev-main#1.0.1
 ```
 
 ## Usage
@@ -18,10 +18,10 @@ To get started, you will need to provide your RMS merchant ID, verify key, and s
 You will also need to set the RMS environment, which can be either `sandbox` or `production`. This can be done by adding the following to your `.env` file:
 
 ````
-RMS_MERCHANT_ID=your_merchant_id
-RMS_VERIFY_KEY=your_verify_key
-RMS_SECRET_KEY=your_secret_key
-RMS_ENVIRONMENT=sandbox
+FIUU_MERCHANT_ID=your_merchant_id
+FIUU_VERIFY_KEY=your_verify_key
+FIUU_SECRET_KEY=your_secret_key
+FIUU_ENVIRONMENT=sandbox
 ````
 
 Note that you should replace `your_merchant_id`, `your_verify_key`, and `your_secret_key` with your actual values.
@@ -29,9 +29,9 @@ Note that you should replace `your_merchant_id`, `your_verify_key`, and `your_se
 Once you have configured your environment, you can create a new instance of the RMS class:
 
 ```php
-use RazerMerchantServices\Payment;
+use Fiuu\Payment;
 
-$rms = new Payment(env('RMS_MERCHANT_ID'), env('RMS_VERIFY_KEY'), env('RMS_SECRET_KEY'), env('RMS_ENVIRONMENT'));
+$fiuu = new Payment(env('RMS_MERCHANT_ID'), env('RMS_VERIFY_KEY'), env('RMS_SECRET_KEY'), env('RMS_ENVIRONMENT'));
 ```
 
 From there, you can create a new transaction by calling the getPaymentUrl method:
@@ -39,7 +39,7 @@ From there, you can create a new transaction by calling the getPaymentUrl method
 ```php
 
 // Optional variable to pass in getPaymentUrl - $bill_desc, $channel, $currency, $returnUrl, $callbackurl, $cancelurl
-$paymentUrl = $rms->getPaymentUrl($orderid, $amount, $bill_name, $bill_email, $bill_mobile);
+$paymentUrl = $fiuu->getPaymentUrl($orderid, $amount, $bill_name, $bill_email, $bill_mobile);
 
 return redirect($paymentUrl);
 ```
@@ -52,9 +52,9 @@ When the transaction is complete, RMS will send a notification to your server to
 
 public function notification(Request $request)
     {   
-        $rms = new Payment(env('RMS_MERCHANT_ID'), env('RMS_VERIFY_KEY'), env('RMS_SECRET_KEY'), env('RMS_ENVIRONMENT'));
+        $fiuu = new Payment(env('RMS_MERCHANT_ID'), env('RMS_VERIFY_KEY'), env('RMS_SECRET_KEY'), env('RMS_ENVIRONMENT'));
         $key = md5($request->tranID.$request->orderid.$request->status.$request->domain.$request->amount.$request->currency);
-        $isPaymentValid = $rms->verifySignature($request->paydate, $request->domain, $key, $request->appcode, $request->skey);
+        $isPaymentValid = $fiuu->verifySignature($request->paydate, $request->domain, $key, $request->appcode, $request->skey);
     
         if ($isPaymentValid) {
             // Payment is valid, update order status
@@ -80,8 +80,8 @@ You can contribute to this plugin by sending the pull request to this repository
 
 ## Resources
 
-- GitHub:     https://github.com/RazerMS
-- Website:    https://merchant.razer.com/
+- GitHub:     https://github.com/FiuuPayment
+- Website:    https://fiuu.com/
 - Twitter:    https://twitter.com/Razer_MS
 - YouTube:    https://www.youtube.com/c/RazerMerchantServices
 - Facebook:   https://www.facebook.com/RazerMerchantServices/
@@ -97,11 +97,11 @@ Submit issue to this repository or email to our support-sa@razer.com
 Contact Support
 -------
 
-Merchant Technical Support / Customer Care : support-sa@razer.com <br>
-Sales/Reseller Enquiry : sales-sa@razer.com <br>
-Marketing Campaign : marketing-sa@razer.com <br>
-Channel/Partner Enquiry : channel-sa@razer.com <br>
-Media Contact : media-sa@razer.com <br>
-R&D and Tech-related Suggestion : technical-sa@razer.com <br>
-Abuse Reporting : abuse-sa@razer.com
+Merchant Technical Support / Customer Care : support@fiuu.com <br>
+Sales/Reseller Enquiry : sales@fiuu.com <br>
+Marketing Campaign : marketing@fiuu.com <br>
+Channel/Partner Enquiry : channel@fiuu.com <br>
+Media Contact : media@fiuu.com <br>
+R&D and Tech-related Suggestion : technical@fiuu.com <br>
+Abuse Reporting : abuse@fiuu.com
 

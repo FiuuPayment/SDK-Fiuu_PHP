@@ -1,9 +1,9 @@
 {   
-    "name": "razermerchantservices/payment",
+    "name": "fiuu/payment",
     "type": "library",
-    "description": "A PHP library for Razer Merchant Services payment gateway",
-    "keywords": ["payment","razer","razermerchantservices"],
-    "homepage": "https://merchant.razer.com/",
+    "description": "A PHP library for Fiuu payment gateway",
+    "keywords": ["payment","razer","razermerchantservices","fiuu"],
+    "homepage": "https://fiuu.com/",
     "license": "MIT",
     "authors": [
         {
@@ -17,12 +17,12 @@
     "repositories": [
         {
             "type": "vcs",
-            "url": "https://github.com/RazerMS/SDK-RazerMS_PHP.git"
+            "url": "https://github.com/FiuuPayment/SDK-RazerMS_PHP.git"
         }
     ],
     "autoload": {
         "psr-4": {
-            "RazerMerchantServices\\": "src/lib"
+            "Fiuu\\": "src/lib"
         }
     },
     "minimum-stability": "dev",

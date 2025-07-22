@@ -16,10 +16,10 @@
   </testsuites>
 
   <php>
-    <env name="RMS_MERCHANT_ID" value="SB_sandbox"/>
-    <env name="RMS_VERIFY_KEY" value="--replaceme--"/>
-    <env name="RMS_SECRET_KEY" value="--replaceme---"/>
-    <env name="RMS_ENVIRONMENT" value="sandbox"/>
+    <env name="FIUU_MERCHANT_ID" value="SB_sandbox"/>
+    <env name="FIUU_VERIFY_KEY" value="--replaceme--"/>
+    <env name="FIUU_SECRET_KEY" value="--replaceme---"/>
+    <env name="FIUU_ENVIRONMENT" value="sandbox"/>
     <env name="DEBUG" value="false"/>
   </php>
 </phpunit>
